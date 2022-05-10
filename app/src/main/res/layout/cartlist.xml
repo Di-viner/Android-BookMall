@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="京西不自营"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/main_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_edit"
+            android:text="编辑"
+            android:textColor="#f0584f"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#000" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/main_smartRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ExpandableListView
+            android:id="@+id/main_expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/main_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="总价格:0"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/main_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/main_submitTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="结算"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/main_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="(0)"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

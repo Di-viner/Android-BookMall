@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:id="@+id/item_check"
+        android:layout_width="40dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_checkStatus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/radio_choose" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/item_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/item_check"
+        android:src="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/item_pic"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/item_pic"
+        android:text="这是一只标题"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/item_spec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/item_pic"
+        android:text="这是一只规格" />
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/item_pic"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/item_pic"
+        android:text="￥0.00"
+        android:textColor="#f0584f" />
+
+    <TextView
+        android:id="@+id/item_reduce"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/item_pic"
+        android:layout_toLeftOf="@id/item_num"
+        android:background="@drawable/bg_calculator_gray"
+        android:gravity="center"
+        android:text="—" />
+
+    <TextView
+        android:id="@+id/item_num"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/item_pic"
+        android:layout_toLeftOf="@id/item_add"
+        android:background="@drawable/bg_calculator_white"
+        android:gravity="center"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/item_add"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/item_pic"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_calculator_gray"
+        android:gravity="center"
+        android:text="+" />
+
+</RelativeLayout>
