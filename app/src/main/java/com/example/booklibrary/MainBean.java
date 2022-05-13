@@ -3,10 +3,7 @@ package com.example.booklibrary;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author fantasychong
- * @date 2019/1/29
- */
+
 public class MainBean implements Serializable {
     private boolean isSelect; //店铺选中状态
     private String shopName; //店铺名称
