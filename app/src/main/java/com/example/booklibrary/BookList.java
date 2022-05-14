@@ -18,8 +18,14 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
 public class BookList extends Fragment implements AdapterView.OnItemClickListener {
-    private ListView lv_booklist;
+    //private ListView lv_booklist;
+    private StickyListHeadersListView lv_booklist;
+
+
     //private FragmentManager fManager;
     private ArrayList<Book> books;
     private String username;
@@ -30,8 +36,8 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fg_booklist, container, false);
-        lv_booklist = (ListView) view.findViewById(R.id.lv_booklist);
-
+        //lv_booklist = (ListView) view.findViewById(R.id.lv_booklist);
+        lv_booklist = (StickyListHeadersListView) view.findViewById(R.id.lv_booklist);
         DBOpenHelper dbOpenHelper = new DBOpenHelper(getActivity(), "db_test.db", null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         this.books = new ArrayList<>();
@@ -57,7 +63,16 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
         cursor.close();
 
         MyAdapter myAdapter = new MyAdapter(books, getActivity());
-        lv_booklist.setAdapter(myAdapter);
+        MyBookAdapter myBookAdapter = new MyBookAdapter(books, getActivity());
+
+
+        //lv_booklist.setAdapter(myAdapter);
+        lv_booklist.setAdapter(myBookAdapter);
+        lv_booklist.setDrawingListUnderStickyHeader(true);
+        lv_booklist.setAreHeadersSticky(true);
+        lv_booklist.setOnItemClickListener(this::onItemClick);
+
+
         lv_booklist.setOnItemClickListener(this);
         //TextView txt_content = (TextView) view.findViewById(R.id.txt_content);
         //txt_content.setText("书单页");

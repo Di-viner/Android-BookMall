@@ -4,14 +4,22 @@
     android:layout_height="match_parent"
      >
 
+    <ImageView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tvHeader"
+        android:src="@drawable/ic_baseline_menu_book_24" />
+
     <TextView
         android:id="@+id/tvHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start|left"
-        android:padding="5dp"
+        android:layout_toRightOf="@id/header_title"
+        android:paddingLeft="5dp"
         android:text="header"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold" />
 

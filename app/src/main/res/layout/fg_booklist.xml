@@ -6,9 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg3"
     android:orientation="vertical">
+    <!--
     <ListView
         android:id="@+id/lv_booklist"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
+    -->
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+        android:id="@+id/lv_booklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:divider="#44FFFFFF"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="true"
+        android:fastScrollEnabled="true"
+        android:overScrollMode="never"
+        android:padding="16dp"
+        android:scrollbarStyle="outsideOverlay" />
 </LinearLayout>
