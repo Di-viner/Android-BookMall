@@ -14,8 +14,6 @@ public class MyAdapter extends BaseAdapter {
 
     private List<Book> mBook;
     private Context mContext;
-    //private Integer[] icons = {R.drawable.user, R.drawable.user, R.drawable.user, R.drawable.user,
-            //R.drawable.user, R.drawable.user, R.drawable.user, R.drawable.user, R.drawable.user,R.drawable.user};
     public MyAdapter(List<Book> mBook, Context mContext){
         this.mBook = mBook;
         this.mContext = mContext;
