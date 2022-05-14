@@ -20,13 +20,11 @@ import java.util.List;
 
 public class BookList extends Fragment implements AdapterView.OnItemClickListener {
     private ListView lv_booklist;
-    private FragmentManager fManager;
+    //private FragmentManager fManager;
     private ArrayList<Book> books;
-
-    public BookList(FragmentManager fm, ArrayList<Book> alb){
-        this.fManager = fm;
-        //this.books = alb;
-        this.books = new ArrayList<>();
+    private String username;
+    public BookList(String username){
+        this.username = username;
     }
 
     @Override
@@ -42,11 +40,17 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
             do {
                 int i = cursor.getColumnIndex("name"), j = cursor.getColumnIndex("intro"),
                         k = cursor.getColumnIndex("price"), p = cursor.getColumnIndex("pic");
+                int q = cursor.getColumnIndex("content"), x = cursor.getColumnIndex("author"),
+                        y = cursor.getColumnIndex("ID");
                 String name = cursor.getString(i);
                 String intro = cursor.getString(j);
                 String price = cursor.getString(k);
+                String content = cursor.getString(q);
+                String author = cursor.getString(x);
+                String ID = cursor.getString(y);
                 int pic = cursor.getInt(p);
-                Book book = new Book(name,price,intro,pic);
+
+                Book book = new Book(name, price, intro, pic, ID, author, content);
                 books.add(book);
             }while(cursor.moveToNext());
         }
@@ -64,18 +68,22 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        FragmentManager fManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         BookDetails bookDetails = new BookDetails();
         Bundle bd = new Bundle();
         bd.putString("name",books.get(position).getName());
         bd.putString("intro",books.get(position).getIntro());
         bd.putString("price",books.get(position).getPrice());
+        bd.putString("ID",books.get(position).getID());
+        bd.putString("author",books.get(position).getAuthor());
+        bd.putString("content",books.get(position).getContent());
         bd.putInt("pic",books.get(position).getPic());
+        bd.putString("username",username);
         bookDetails.setArguments(bd);
-
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.fl,bookDetails);
-
+        fragmentTransaction.hide(this);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

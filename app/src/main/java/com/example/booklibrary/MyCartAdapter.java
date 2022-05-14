@@ -18,10 +18,7 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author fantasychong
- * @date 2019/1/29
- */
+
 public class MyCartAdapter extends BaseExpandableListAdapter {
 
     public static final String TAG_REFRESH_PRICE = "tag_refresh_price";

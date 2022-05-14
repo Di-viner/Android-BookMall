@@ -52,7 +52,7 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.iv_pic.setImageResource(mBook.get(position).getPic());
         viewHolder.tv_name.setText(mBook.get(position).getName());
         viewHolder.tv_intro.setText(mBook.get(position).getIntro());
-        viewHolder.tv_price.setText(mBook.get(position).getPrice());
+        viewHolder.tv_price.setText("¥" + mBook.get(position).getPrice());
         return convertView;
     }
 

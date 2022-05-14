@@ -1,5 +1,6 @@
 package com.example.booklibrary;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,12 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private ShoppingCart shoppingCart = null;
     private History history = null;
 
-    public MyFragmentPagerAdapter(FragmentManager fm, ArrayList<Book> alb){
+
+    public MyFragmentPagerAdapter(FragmentManager fm, String username){
         super(fm);
-        bookList = new BookList(fm, alb);
-        shoppingCart = new ShoppingCart();
-        history = new History();
+        bookList = new BookList(username);
+        shoppingCart = new ShoppingCart(username);
+        history = new History(username);
     }
 
 

@@ -3,6 +3,7 @@ package com.example.booklibrary;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,12 +23,15 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private ViewPager vpager;
     private MyFragmentPagerAdapter mAdapter;
     private DBOpenHelper mDBOpenHelper;
-    private ArrayList<Book> datas = new ArrayList<>();
+    //private ArrayList<Book> datas = new ArrayList<>();
 
 
     public static final int PAGE_ONE = 0;
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
+    private static final int DEFAULT_OFFSCREEN_PAGES = 0;
+    private int mOffscreenPageLimit = DEFAULT_OFFSCREEN_PAGES;
+
 
     private void init(){
         txt_topbar = (TextView) findViewById(R.id.txt_topbar);
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         rb_history = (RadioButton) findViewById(R.id.rb_history);
         rg_tab_bar.setOnCheckedChangeListener(this);
         vpager = (ViewPager) findViewById(R.id.vpager);
+        vpager.setOffscreenPageLimit(0);
         vpager.setAdapter(mAdapter);
         vpager.setCurrentItem(0);
         vpager.addOnPageChangeListener(this);
@@ -45,26 +50,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDBOpenHelper = new DBOpenHelper(this, "db_test.db", null,1);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
 
-        SQLiteDatabase db = mDBOpenHelper.getWritableDatabase();
-        //main函数在这里完成数据库到arraylist的转换，datas作为参数传给MyFragmentPagerAdapter
-        Cursor cursor = db.query("book",null,null,null,null,null,null);
-        if(cursor.moveToFirst()){
-            do {
-                int i = cursor.getColumnIndex("name"), j = cursor.getColumnIndex("intro"),
-                        k = cursor.getColumnIndex("price"), p = cursor.getColumnIndex("pic");
-                String name = cursor.getString(i);
-                String intro = cursor.getString(j);
-                String price = cursor.getString(k);
-                int pic = cursor.getInt(p);
-                Book book = new Book(name,price,intro,pic);
-                datas.add(book);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
+        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),username);
 
-        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),datas);
         init();
         rb_booklist.setChecked(true);
     }

@@ -1,13 +1,18 @@
 package com.example.booklibrary;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +20,10 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import static com.example.booklibrary.MyCartAdapter.TAG_REFRESH_NUM;
 import static com.example.booklibrary.MyCartAdapter.TAG_REFRESH_PRICE;
@@ -40,21 +48,45 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
     private SelectBean selectBean;
 
 
+    ///
+    private boolean isVisibleToUser;
+    public boolean isInit = false;
+    String username;
 
-    View view;
-    public ShoppingCart(){
+    private View view;
+    public ShoppingCart(String username){
+        this.username = username;
     }
+    ///
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser){
+        super.setUserVisibleHint(isVisibleToUser);
+        this.isVisibleToUser = isVisibleToUser;
+        setParam();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //super.onCreateView(inflater,container,savedInstanceState);
-        view = inflater.inflate(R.layout.cartlist, container, false);
-        initViews();
-        //配置适配器
-        initAdapter();
-        //配置数据
-        initData();
+        if (view == null)
+        {
+            view = inflater.inflate(R.layout.cartlist, container, false);
+            isInit = true;
+            setParam();
+        }
+
         return view;
+    }
+    private void setParam() {
+        if (isInit && isVisibleToUser) {
+            //页面的逻辑和网络请求，下面我随便贴的一点我的代码
+            initViews();
+            //配置适配器
+            initAdapter();
+            //配置数据
+            initData();
+        }
     }
 
 
@@ -87,6 +119,9 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
         });
     }
 
+
+
+
     /**
      * 配置适配器
      */
@@ -100,35 +135,38 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
      */
     private void initData() {
         //商品测试数据
-        MainBean.MainItemBean mainItemBean = new MainBean.MainItemBean(false, "1", R.mipmap.ic_launcher, "iPhoneXs Max", "银色 8G+256G", "9989", "1");
-        MainBean.MainItemBean mainItemBean1 = new MainBean.MainItemBean(false, "2", R.mipmap.ic_launcher, "华为P20 Pro", "深空灰色 6G+128G", "5299", "1");
-        MainBean.MainItemBean mainItemBean2 = new MainBean.MainItemBean(false, "3", R.mipmap.ic_launcher, "小米9", "中国红 8G+128G", "4999", "2");
-        MainBean.MainItemBean mainItemBean3 = new MainBean.MainItemBean(false, "4", R.mipmap.ic_launcher, "三星Galaxy S10+", "黑色 4G+64G", "9998", "1");
-        MainBean.MainItemBean mainItemBean4 = new MainBean.MainItemBean(false, "5", R.mipmap.ic_launcher, "魅族16th+", "黑色 4G+64G", "2698", "1");
-        MainBean.MainItemBean mainItemBean5 = new MainBean.MainItemBean(false, "6", R.mipmap.ic_launcher, "OPPO FINDX", "黑色 4G+64G", "2698", "1");
+        List<MainBean.MainItemBean> mainItemBeanList = new ArrayList<>() ;
 
-        List<MainBean.MainItemBean> mainItemBeanList = new ArrayList<>();
-        mainItemBeanList.add(mainItemBean);
-        mainItemBeanList.add(mainItemBean1);
+        ///
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(getActivity(), "db_test.db", null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        Cursor cursor = db.query("cart",null,"username = ?",new String[]{username},null,null,null);
+        if(cursor.moveToFirst()) {
+            do {
+                int i = cursor.getColumnIndex("name"),
+                        k = cursor.getColumnIndex("price"), p = cursor.getColumnIndex("pic");
+                int q = cursor.getColumnIndex("num"),
+                        y = cursor.getColumnIndex("ID");
+                String name = cursor.getString(i);
+                String price = cursor.getString(k);
+                String num = cursor.getString(q);
+                String author = cursor.getString(y);
+                int pic = cursor.getInt(p);
+                String ID = cursor.getString(y);
+                mainItemBeanList.add(new MainBean.MainItemBean(false,ID,pic,name,author,price,num));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
 
-        List<MainBean.MainItemBean> mainItemBeanList1 = new ArrayList<>();
-        mainItemBeanList1.add(mainItemBean2);
-        mainItemBeanList1.add(mainItemBean3);
-
-        List<MainBean.MainItemBean> mainItemBeanList2 = new ArrayList<>();
-        mainItemBeanList2.add(mainItemBean4);
-        mainItemBeanList2.add(mainItemBean5);
 
         //店铺测试数据
-        MainBean mainBean = new MainBean(false, "天猫金牌卖家一号", mainItemBeanList);
-        MainBean mainBean1 = new MainBean(false, "地汪银牌卖家二号", mainItemBeanList);
-        MainBean mainBean2 = new MainBean(false, "京西铜牌卖家三号", mainItemBeanList);
+        MainBean mainBean = new MainBean(false, "全选", mainItemBeanList);
+
 
         //添加店铺列表
         adapter.getMainList().clear();
         adapter.getMainList().add(mainBean);
-        adapter.getMainList().add(mainBean1);
-        adapter.getMainList().add(mainBean2);
+
 
         //保存选中状态
         List<SelectBean> selectBeanList = new ArrayList<>();
@@ -168,27 +206,14 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-            for (int i = 0; i < mainItemBeanList.size(); i++) {
-                for (int j = 0; j < selectBeanList.size(); j++) {
-                    if (selectBeanList.get(j).getId().equals(mainItemBeanList1.get(i).getId())) {
-                        mainItemBeanList1.get(i).setSelect(selectBeanList.get(j).isSelect());
-                    }
-                }
-            }
-            for (int i = 0; i < mainItemBeanList.size(); i++) {
-                for (int j = 0; j < selectBeanList.size(); j++) {
-                    if (selectBeanList.get(j).getId().equals(mainItemBeanList2.get(i).getId())) {
-                        mainItemBeanList2.get(i).setSelect(selectBeanList.get(j).isSelect());
-                    }
-                }
-            }
+
         }
 
         //添加商品布局
         adapter.getMainItemList().clear();
         adapter.getMainItemList().add(mainItemBeanList);
-        adapter.getMainItemList().add(mainItemBeanList1);
-        adapter.getMainItemList().add(mainItemBeanList2);
+        //adapter.getMainItemList().add(mainItemBeanList1);
+        //adapter.getMainItemList().add(mainItemBeanList2);
 
         //根据子item的选中状态来决定店铺的点选状态
         boolean noSelect = false;
@@ -199,21 +224,6 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
             adapter.getMainList().get(0).setSelect(!noSelect);
         }
 
-        boolean noSelect1 = false;
-        for (int j = 0; j < adapter.getMainItemList().get(1).size(); j++) {
-            if (!adapter.getMainItemList().get(1).get(j).isSelect()) {
-                noSelect1 = true;
-            }
-            adapter.getMainList().get(1).setSelect(!noSelect1);
-        }
-
-        boolean noSelect2 = false;
-        for (int j = 0; j < adapter.getMainItemList().get(2).size(); j++) {
-            if (!adapter.getMainItemList().get(2).get(j).isSelect()) {
-                noSelect2 = true;
-            }
-            adapter.getMainList().get(2).setSelect(!noSelect2);
-        }
         adapter.notifyDataSetChanged();
 
         //设置所有的子item都展开
@@ -250,6 +260,9 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(getActivity(), "db_test.db", null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+
         switch (v.getId()) {
             case R.id.main_edit:
                 if ("结算".equals(submitTv.getText().toString())) {
@@ -262,13 +275,42 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
                 break;
             case R.id.main_submit:
                 if ("结算".equals(submitTv.getText().toString())) {
-                    Log.d("fantasychong_selctList", adapter.getSelectList().toString());
+                    addToHistory();
                 } else {
+
+                    List<MainBean.MainItemBean> selectList = adapter.getSelectList();
+                    for(int i = 0; i < selectList.size(); i++) {
+                        db.delete("cart", "name = ?", new String[]{selectList.get(i).getGoodsName()});
+                    }
                     adapter.removeGoods();
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    private void addToHistory() {
+        List<MainBean.MainItemBean> selectList = adapter.getSelectList();
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(getActivity(), "db_test.db", null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        for(int i = 0; i < selectList.size(); i++){
+            SimpleDateFormat formatter = new SimpleDateFormat ("yyyy年MM月dd日   HH:mm:ss");
+            Date curDate =  new Date(System.currentTimeMillis());
+            ContentValues values = new ContentValues();
+            values.put("pic",selectList.get(i).getGoodsPic());
+            values.put("username", username);
+            values.put("orderID", System.currentTimeMillis() + selectList.get(i).getId());
+            values.put("name", selectList.get(i).getGoodsName());
+            values.put("num", selectList.get(i).getGoodsNum());
+            values.put("time",formatter.format(curDate));
+            int totalPrice = Integer.parseInt(selectList.get(i).getGoodsOriginalPrice()) * Integer.parseInt(selectList.get(i).getGoodsNum());
+            values.put("totalPrice",String.valueOf(totalPrice));
+            db.delete("cart","name = ? and username = ?", new String[]{selectList.get(i).getGoodsName(), username});
+            adapter.removeGoods();
+            db.insert("history",null, values);
+        }
+        Toast.makeText(getActivity(), "支付成功", Toast.LENGTH_SHORT).show();
+        Log.d("fantasychong_selctList", adapter.getSelectList().toString());
     }
 }

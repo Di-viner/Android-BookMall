@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg3"
+
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -16,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="京西不自营"
+            android:text="我的购物车"
             android:textSize="16sp" />
 
         <TextView
