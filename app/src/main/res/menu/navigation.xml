@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/rb_booklist"
+        android:icon="@drawable/tab_menu_channel"
+        android:title="书库"/>
+
+    <item
+        android:id="@+id/rb_shoppingcart"
+        android:icon="@drawable/tab_menu_shoppingcast"
+        android:title="购物车"/>
+
+    <item
+        android:id="@+id/rb_history"
+        android:icon="@drawable/tab_menu_history"
+        android:title="历史订单"/>
+</menu>

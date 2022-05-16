@@ -55,7 +55,6 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
                 String author = cursor.getString(x);
                 String ID = cursor.getString(y);
                 int pic = cursor.getInt(p);
-
                 Book book = new Book(name, price, intro, pic, ID, author, content);
                 books.add(book);
             }while(cursor.moveToNext());
