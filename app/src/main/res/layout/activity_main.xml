@@ -28,7 +28,7 @@
             android:background="@color/div_white"/>
     </RelativeLayout>
 
-    <RadioGroup
+<!--    <RadioGroup
         android:id="@+id/rg_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -51,7 +51,7 @@
             android:drawableTop="@drawable/tab_menu_history"
             android:text="历史订单"/>
 
-    </RadioGroup>
+    </RadioGroup>-->
     <View
         android:id="@+id/div_tab_bar"
         android:layout_width="match_parent"

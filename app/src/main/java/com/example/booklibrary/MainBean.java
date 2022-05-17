@@ -5,22 +5,22 @@ import java.util.List;
 
 
 public class MainBean implements Serializable {
-    private boolean isSelect; //店铺选中状态
-    private String shopName; //店铺名称
+    private boolean isSelect; //购物车全选状态
+    private String isALL; //店铺名称
     private List<MainItemBean> cartItemBeanList; //商品list
 
     @Override
     public String toString() {
         return "MainBean{" +
                 "isSelect=" + isSelect +
-                ", shopName='" + shopName + '\'' +
+                ", isALL='" + isALL + '\'' +
                 ", cartItemBeanList=" + cartItemBeanList +
                 '}';
     }
 
-    public MainBean(boolean isSelect, String shopName, List<MainItemBean> cartItemBeanList) {
+    public MainBean(boolean isSelect, String isALL, List<MainItemBean> cartItemBeanList) {
         this.isSelect = isSelect;
-        this.shopName = shopName;
+        this.isALL = isALL;
         this.cartItemBeanList = cartItemBeanList;
     }
 
@@ -32,12 +32,12 @@ public class MainBean implements Serializable {
         isSelect = select;
     }
 
-    public String getShopName() {
-        return shopName;
+    public String getisALL() {
+        return isALL;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
+    public void setisALL(String isALL) {
+        this.isALL = isALL;
     }
 
     public List<MainItemBean> getCartItemBeanList() {

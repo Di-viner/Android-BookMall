@@ -20,7 +20,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
         android:text="书名"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/item_orderIDna"
@@ -50,6 +50,7 @@
         android:layout_alignBottom="@id/item_pic"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
+        android:textSize="16sp"
         android:text="￥0.00"
         android:textColor="#f0584f" />
 
@@ -70,7 +71,7 @@
         android:layout_alignBottom="@id/item_pic"
         android:layout_toLeftOf="@+id/item_num"
         android:text="购买数量:"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/item_num"

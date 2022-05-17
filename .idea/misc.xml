@@ -5,17 +5,24 @@
       <map>
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable-v24/btn_selector.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable-v24/editext_selector.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/bg_calculator_gray.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/bg_calculator_white.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/bg_edit.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/btn_selector.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/button_style.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/edit_text.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/editext_selector.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.153" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.153" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.153" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/ic_shop_press.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/shape_btn_normal.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/shape_btn_pressed.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/shape_edit_focus.xml" value="0.1" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/shape_edit_normal.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/tab_menu_bg.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/tab_menu_channel.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/tab_menu_history.xml" value="0.1" />
@@ -25,15 +32,15 @@
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/drawable/tab_menu_text.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/activity_register.xml" value="0.14666666666666667" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/bg_edit.xml" value="0.1" />
-        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/book_context.xml" value="0.3724832214765101" />
-        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/book_detail.xml" value="0.22" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/book_context.xml" value="0.23931623931623933" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/book_detail.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/book_header.xml" value="0.1" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/cart_head.xml" value="0.4466666666666667" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/cart_item.xml" value="0.22" />
-        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/cartlist.xml" value="0.22" />
+        <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/cartlist.xml" value="0.264" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/editext_sel.xml" value="0.10416666666666667" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/fg_booklist.xml" value="0.14666666666666667" />
         <entry key="..\:/downlodd_software/as_pj2/BookLibrary/app/src/main/res/layout/fg_content.xml" value="0.1" />

@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/rb_booklist"
-        android:icon="@drawable/tab_menu_channel"
+        android:icon="@drawable/ic_baseline_library_books_24"
         android:title="书库"/>
 
     <item
         android:id="@+id/rb_shoppingcart"
-        android:icon="@drawable/tab_menu_shoppingcast"
+        android:icon="@drawable/ic_baseline_add_shopping_cart_24"
         android:title="购物车"/>
 
     <item
         android:id="@+id/rb_history"
-        android:icon="@drawable/tab_menu_history"
+        android:icon="@drawable/ic_baseline_history_24"
         android:title="历史订单"/>
 </menu>

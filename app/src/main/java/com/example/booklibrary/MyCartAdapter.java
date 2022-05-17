@@ -85,7 +85,7 @@ public class MyCartAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.cart_head, parent, false);
             groupHolder.check = convertView.findViewById(R.id.item_head_check);
             groupHolder.checkStatus = convertView.findViewById(R.id.item_head_checkStatus);
-            groupHolder.shopName = convertView.findViewById(R.id.item_head_shopName);
+            groupHolder.isALL = convertView.findViewById(R.id.item_head_isALL);
             groupHolder.layout = convertView.findViewById(R.id.item_head_layout);
             convertView.setTag(groupHolder);
         } else {
@@ -95,7 +95,7 @@ public class MyCartAdapter extends BaseExpandableListAdapter {
         //各种控件赋值
         MainBean mainBean = mainBeanList.get(groupPosition);
         groupHolder.checkStatus.setImageResource(mainBean.isSelect() ? R.drawable.radio_choose : R.drawable.radio_normal_black);
-        groupHolder.shopName.setText(mainBean.getShopName());
+        groupHolder.isALL.setText(mainBean.getisALL());
 
         //取消父item的点击事件
         groupHolder.layout.setOnClickListener(new View.OnClickListener() {
@@ -364,7 +364,7 @@ public class MyCartAdapter extends BaseExpandableListAdapter {
     class GroupHolder {
         RelativeLayout check; //选择点击框
         ImageView checkStatus; //选择状态图片
-        TextView shopName; //店铺名称
+        TextView isALL; //店铺名称
         LinearLayout layout; //父item布局
     }
 }

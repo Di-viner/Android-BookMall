@@ -2,9 +2,14 @@ package com.example.booklibrary;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
     //public static final String name = "db_test.db";
@@ -68,6 +73,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     //}
 
     private void initLibrary(SQLiteDatabase sqLiteDatabase) {
+
 
         ///0
         ContentValues values = new ContentValues();
@@ -187,4 +193,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("book", null, values);
 
     }
+
+
 }

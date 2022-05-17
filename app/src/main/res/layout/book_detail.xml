@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@id/top_bar"
-        android:src="@drawable/user" />
+        android:src="@drawable/ic_baseline_menu_book_24" />
 
     <TextView
         android:layout_width="match_parent"
@@ -111,6 +111,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="9dp"
+
         android:text="该小说描写了托马斯与特丽莎、萨丽娜之间的感情生活。它是一部哲理小说，小说从“永恒轮回”的讨论开始，把读者带入了对一系列问题的思考中，比如轻与重、灵与肉。"
         android:textSize="22sp" />
 
@@ -119,6 +120,7 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+
         android:background="#fff">
 
 
@@ -127,7 +129,8 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:background="#f00"
+
+            android:background="@drawable/btn_selector"
             android:gravity="center"
             android:shadowRadius="@integer/material_motion_duration_medium_1"
             android:text="加入购物车"

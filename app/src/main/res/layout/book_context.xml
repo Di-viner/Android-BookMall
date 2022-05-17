@@ -8,7 +8,7 @@
         android:id="@+id/iv_pic"
         android:layout_width="120dp"
         android:layout_height="90dp"
-        android:src="@drawable/user"/>
+        android:src="@drawable/ic_baseline_library_books_24"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
@@ -37,7 +37,8 @@
             android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:text="￥3.00"
             android:textColor="#f0584f"/>
 

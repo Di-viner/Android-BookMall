@@ -21,6 +21,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+<!--    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#005748</color>
+    <color name="colorAccent">#4caf50</color>-->
 
     <color name="color_a1a1a1">#A1A1A1</color>
     <color name="color_000000">#000000</color>

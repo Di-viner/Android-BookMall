@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), username);
 
         init();
+        //mBottomNavigationView.setSelectedItemId(R.id.lv_booklist);
+
         //rb_booklist.setChecked(true);
     }
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         switch (position) {
             case 0:
-                mBottomNavigationView.setSelectedItemId(R.id.lv_booklist);
+                mBottomNavigationView.setSelectedItemId(R.id.rb_booklist);
                 break;
             case 1:
                 mBottomNavigationView.setSelectedItemId(R.id.rb_shoppingcart);
@@ -115,13 +117,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         if (state == 2) {
             switch (vpager.getCurrentItem()) {
                 case PAGE_ONE:
-                    rb_booklist.setChecked(true);
+                    mBottomNavigationView.setSelectedItemId(R.id.rb_booklist);
                     break;
                 case PAGE_TWO:
-                    rb_shoppingcart.setChecked(true);
+                    mBottomNavigationView.setSelectedItemId(R.id.rb_shoppingcart);
+                    //rb_shoppingcart.setChecked(true);
                     break;
                 case PAGE_THREE:
-                    rb_history.setChecked(true);
+                    mBottomNavigationView.setSelectedItemId(R.id.rb_history);
+
+                    //rb_history.setChecked(true);
                     break;
             }
         }*/

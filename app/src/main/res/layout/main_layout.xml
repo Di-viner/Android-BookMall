@@ -34,9 +34,11 @@
         android:layout_height="56dp"
 
         android:layout_alignParentBottom="true"
-        app:menu="@menu/navigation"
+        app:menu="@menu/navigation"    />
+        <!--
         app:itemTextColor="@drawable/tab_menu_text"
-        app:itemBackground="@drawable/tab_menu_bg"/>
+        app:itemBackground="@drawable/tab_menu_bg"-->
+
 
     <View
         android:id="@+id/div_tab_bar"

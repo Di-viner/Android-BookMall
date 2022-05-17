@@ -1,6 +1,8 @@
 package com.example.booklibrary;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -122,9 +124,7 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
 
 
 
-    /**
-     * 配置适配器
-     */
+
     private void initAdapter() {
         adapter = new MyCartAdapter(new ArrayList<MainBean>(), new ArrayList<List<MainBean.MainItemBean>>(), getActivity());
         expandableListView.setAdapter(adapter);
@@ -212,10 +212,8 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
         //添加商品布局
         adapter.getMainItemList().clear();
         adapter.getMainItemList().add(mainItemBeanList);
-        //adapter.getMainItemList().add(mainItemBeanList1);
-        //adapter.getMainItemList().add(mainItemBeanList2);
 
-        //根据子item的选中状态来决定店铺的点选状态
+        //根据子item的选中状态来决定全选的点选状态
         boolean noSelect = false;
         for (int j = 0; j < adapter.getMainItemList().get(0).size(); j++) {
             if (!adapter.getMainItemList().get(0).get(j).isSelect()) {
@@ -275,7 +273,26 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
                 break;
             case R.id.main_submit:
                 if ("结算".equals(submitTv.getText().toString())) {
-                    addToHistory();
+
+                    AlertDialog.Builder dialog = new AlertDialog.Builder (getContext());//通过AlertDialog.Builder创建出一个AlertDialog的实例
+
+                    dialog.setTitle("支付确认");//设置对话框的标题
+                    dialog.setMessage("确认支付订单？.");//设置对话框的内容
+                    dialog.setCancelable(false);//设置对话框是否可以取消
+                    dialog.setPositiveButton("确认", new DialogInterface. OnClickListener() {//确定按钮的点击事件
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            addToHistory();
+                        }
+                    });
+                    dialog.setNegativeButton("取消", new DialogInterface. OnClickListener() {//取消按钮的点击事件
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    dialog.show();//显示对话框
+
                 } else {
 
                     List<MainBean.MainItemBean> selectList = adapter.getSelectList();
@@ -311,6 +328,6 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
             db.insert("history",null, values);
         }
         Toast.makeText(getActivity(), "支付成功", Toast.LENGTH_SHORT).show();
-        Log.d("fantasychong_selctList", adapter.getSelectList().toString());
+        Log.d("selctList", adapter.getSelectList().toString());
     }
 }
