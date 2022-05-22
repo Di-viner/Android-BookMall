@@ -108,6 +108,7 @@ public class History extends Fragment implements AdapterView.OnItemClickListener
             }while(cursor.moveToNext());
         }
         cursor.close();
+        db.close();         ////
         smartRefreshLayout.finishRefresh();
 
     }
@@ -134,6 +135,8 @@ public class History extends Fragment implements AdapterView.OnItemClickListener
             bd.putInt("pic",cursor.getInt(n));
             bd.putString("username",username);
         }
+        cursor.close();////
+        db.close();     ////
         bookDetails.setArguments(bd);
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.fl,bookDetails);

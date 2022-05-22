@@ -106,6 +106,8 @@ public class BookDetails extends Fragment implements View.OnClickListener {
         Cursor cursor = db.query("cart",null,"username=? and name = ?",new String[]{username, tv_name.getText().toString()},null,null,null);
         if(cursor.moveToFirst()){
             Toast.makeText(getActivity(), "此商品已在购物车中", Toast.LENGTH_SHORT).show();
+            cursor.close();
+            db.close();         ////
         }
         else {
             ContentValues values = new ContentValues();
@@ -119,7 +121,9 @@ public class BookDetails extends Fragment implements View.OnClickListener {
             db.insert("cart",null,values);
 
             Toast.makeText(getActivity(), "添加购物车成功", Toast.LENGTH_SHORT).show();
+            cursor.close();
 
+            db.close();     ////
         }
 
     }

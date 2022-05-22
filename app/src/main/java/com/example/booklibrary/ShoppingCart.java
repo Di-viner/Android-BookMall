@@ -157,7 +157,7 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
             } while (cursor.moveToNext());
         }
         cursor.close();
-
+        db.close();
 
         //店铺测试数据
         MainBean mainBean = new MainBean(false, "全选", mainItemBeanList);
@@ -270,6 +270,7 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
                     submitTv.setText("结算");
                     edit.setText("编辑");
                 }
+                db.close();
                 break;
             case R.id.main_submit:
                 if ("结算".equals(submitTv.getText().toString())) {
@@ -301,8 +302,10 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
                     }
                     adapter.removeGoods();
                 }
+                db.close();////
                 break;
             default:
+                db.close();////
                 break;
         }
     }
@@ -327,6 +330,7 @@ public class ShoppingCart extends Fragment implements View.OnClickListener {
             adapter.removeGoods();
             db.insert("history",null, values);
         }
+        db.close();
         Toast.makeText(getActivity(), "支付成功", Toast.LENGTH_SHORT).show();
         Log.d("selctList", adapter.getSelectList().toString());
     }

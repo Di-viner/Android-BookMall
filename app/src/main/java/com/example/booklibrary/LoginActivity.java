@@ -81,6 +81,8 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
                     if(cursor.moveToFirst()){
                         int i = cursor.getColumnIndex("password");
                         if(!pwd.equals(cursor.getString(i))){
+                            cursor.close();////
+                            db.close();
                             Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         }else{
                             if(sav_pwd.isChecked()){
@@ -117,13 +119,19 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
                                     }
                                 }
                             };
+                            cursor.close();////
+                            db.close();
                             thread.start();
                         }
                     }else{
                         Toast.makeText(this, "用户名不存在", Toast.LENGTH_SHORT).show();
+                        cursor.close();////
+                        db.close();
                     }
                 }else{
                     Toast.makeText(this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
+                    cursor.close();////
+                    db.close();
                 }
             default:
                 finish();

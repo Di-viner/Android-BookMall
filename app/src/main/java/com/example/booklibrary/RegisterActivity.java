@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_username, et_pwd1, et_pwd2;
+    private Button iv_back;
     private DBOpenHelper mDBopenHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_pwd1 = findViewById(R.id.pwd);
         et_pwd2 = findViewById(R.id.pwd2);
         Button btn_register = findViewById(R.id.registerBtn);
+        iv_back = findViewById(R.id.iv_back);
         btn_register.setOnClickListener(this);
+        iv_back.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if(cursor.moveToFirst())
                     {
                         Toast.makeText(this,"用户名已存在",Toast.LENGTH_SHORT).show();
+                        cursor.close();
                     }
                 }else{
                     Toast.makeText(this,"用户名不能为空",Toast.LENGTH_SHORT).show();
@@ -59,6 +63,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         values.put("username", username);
                         values.put("password", pwd1);
                         db.insert("user",null,values);
+                        db.close();
                         Toast.makeText(this, "注册中...", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
@@ -71,6 +76,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }else{
                     Toast.makeText(this,"输入密码不能为空", Toast.LENGTH_SHORT).show();
                 }
+                if(null != db){
+                    db.close();
+                }
+                break;
+            case R.id.iv_back:
+                if(db!=null) {
+                    db.close();
+                }
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
     }
