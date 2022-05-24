@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private TextView txt_topbar;
     private RadioGroup rg_tab_bar;
@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     public static final int PAGE_ONE = 0;
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
-    private static final int DEFAULT_OFFSCREEN_PAGES = 0;
-    private int mOffscreenPageLimit = DEFAULT_OFFSCREEN_PAGES;
 
     private BottomNavigationView mBottomNavigationView;
 
@@ -46,9 +44,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         //rb_history = (RadioButton) findViewById(R.id.rb_history);
         // rg_tab_bar.setOnCheckedChangeListener(this);
         vpager = (ViewPager) findViewById(R.id.vpager);
-
         mBottomNavigationView = (BottomNavigationView) findViewById(R.id.rg_tab_bar);
-
         vpager.setOffscreenPageLimit(0);
         vpager.setAdapter(mAdapter);
         vpager.setCurrentItem(0);
@@ -62,15 +58,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         setContentView(R.layout.main_layout);
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), username);
-
         init();
         //mBottomNavigationView.setSelectedItemId(R.id.lv_booklist);
-
         //rb_booklist.setChecked(true);
     }
 
+/*
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
         switch (i) {
@@ -85,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 break;
         }
     }
+*/
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -93,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     @Override
     public void onPageSelected(int position) {
-
         switch (position) {
             case 0:
                 mBottomNavigationView.setSelectedItemId(R.id.rb_booklist);
@@ -104,10 +98,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             case 2:
                 mBottomNavigationView.setSelectedItemId(R.id.rb_history);
                 break;
-
             default:
                 break;
-
         }
     }
 

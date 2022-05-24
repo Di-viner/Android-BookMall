@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@id/top_bar"
-        android:src="@drawable/ic_baseline_menu_book_24" />
+        android:src="@drawable/a" />
 
     <TextView
         android:layout_width="match_parent"

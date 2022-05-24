@@ -133,8 +133,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
                     cursor.close();////
                     db.close();
                 }
-            default:
-                finish();
+
         }
     }
 }

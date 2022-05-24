@@ -64,7 +64,7 @@ public class BookList extends Fragment implements AdapterView.OnItemClickListene
         }
         cursor.close();     ////
         db.close();         ////
-        MyAdapter myAdapter = new MyAdapter(books, getActivity());
+        //MyAdapter myAdapter = new MyAdapter(books, getActivity());
         MyBookAdapter myBookAdapter = new MyBookAdapter(books, getActivity());
 
 

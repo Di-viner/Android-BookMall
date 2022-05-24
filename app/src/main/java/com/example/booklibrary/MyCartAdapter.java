@@ -247,7 +247,7 @@ public class MyCartAdapter extends BaseExpandableListAdapter {
 
 
     /**
-     * 获取店铺list
+     * 获取全选list
      */
     public List<MainBean> getMainList() {
         return mainBeanList;

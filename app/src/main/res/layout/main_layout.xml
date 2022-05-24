@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_above="@+id/rg_tab_bar"
-        android:background="@color/div_white"/>
+        android:background="@color/div_white" />
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="match_parent"

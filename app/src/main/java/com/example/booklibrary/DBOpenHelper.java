@@ -68,9 +68,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS user");
         onCreate(sqLiteDatabase);
     }
-    //void add(String name, String password){
-        //db.execSQL("INSERT INTO user (username,password) VALUES(?,?)",new Object[]{name,password});
-    //}
+
 
     private void initLibrary(SQLiteDatabase sqLiteDatabase) {
 

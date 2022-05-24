@@ -23,7 +23,7 @@
         android:layout_height="80dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/item_check"
-        android:src="@color/colorPrimaryDark" />
+        android:src="@drawable/a" />
 
     <TextView
         android:id="@+id/item_name"
@@ -32,7 +32,7 @@
         android:layout_alignTop="@id/item_pic"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
-        android:text="这是一只标题"
+        android:text="不能承受的生命之轻"
         android:textSize="16sp" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/item_pic"
-        android:text="这是一只规格" />
+        android:text="2000" />
 
     <TextView
         android:id="@+id/item_price"
@@ -52,7 +52,7 @@
         android:layout_alignBottom="@id/item_pic"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
-        android:text="￥0.00"
+        android:text="￥28.00"
         android:textColor="#f0584f" />
 
     <TextView

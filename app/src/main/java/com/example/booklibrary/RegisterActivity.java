@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
         init();
         mDBopenHelper = new DBOpenHelper(this,"db_test.db",null,1);
-        mDBopenHelper.getWritableDatabase();
+        //mDBopenHelper.getWritableDatabase();
     }
     private void init(){
         et_username = findViewById(R.id.username);

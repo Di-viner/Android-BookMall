@@ -10,7 +10,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerVertical="true"
-        android:src="@color/colorPrimaryDark" />
+        android:src="@drawable/a" />
 
     <TextView
         android:id="@+id/item_name"
@@ -19,7 +19,7 @@
         android:layout_alignTop="@id/item_pic"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
-        android:text="书名"
+        android:text="不能承受的生命之轻"
         android:textSize="18sp" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/item_orderIDna"
         android:layout_toRightOf="@id/item_pic"
-        android:text="这是订单号" />
+        android:text="16526919908952000" />
 
 
     <TextView
@@ -50,9 +50,9 @@
         android:layout_alignBottom="@id/item_pic"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/item_pic"
-        android:textSize="16sp"
-        android:text="￥0.00"
-        android:textColor="#f0584f" />
+        android:text="￥28.00"
+        android:textColor="#f0584f"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/item_time"
