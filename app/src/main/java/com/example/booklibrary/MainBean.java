@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MainBean implements Serializable {
     private boolean isSelect; //购物车全选状态
-    private String isALL; //店铺名称
+    private String isALL; //显示全选
     private List<MainItemBean> cartItemBeanList; //商品list
 
     @Override
