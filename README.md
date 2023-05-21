@@ -1,4 +1,4 @@
-# AndroidFinalWork
+# Android-Book Mall
 图书商城APP，实现的主要功能有：
 1.	Login登录界面，可登录和注册，用户登录成功后将用户名写入UserDefaults，下次登录无需再输入用户名。
 2.	主界面有三个tab，一个是图书列表，一个是购物车，一个是历史订单。
